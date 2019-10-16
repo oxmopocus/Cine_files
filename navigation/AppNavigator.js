@@ -1,15 +1,10 @@
 import React from 'react';
 import { createSwitchNavigator, createAppContainer } from 'react-navigation';
-import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
-import AuthLoadingScreen from '../screens/AuthLoadingScreen';
-
 import HomeScreen from '../screens/HomeScreen';
-import IntroScreen from '../screens/IntroScreen';
-import addCityScreen from '../screens/addCityScreen';
-import IntroFormScreen from '../screens/IntroFormScreen';
+import Profile from '../screens/ProfileScreen';
+import FavoriteScreen from '../screens/FavoriteScreen';
 import { AntDesign } from '@expo/vector-icons';
-import editScreen from '../screens/editScreen';
 
 const TabNavigator = createBottomTabNavigator({
   
@@ -29,8 +24,8 @@ const TabNavigator = createBottomTabNavigator({
       }
   },
 
-  Add: {
-    screen: addCityScreen,
+  Favorite: {
+    screen: FavoriteScreen,
     navigationOptions: {
         tabBarLabel: "Favorites",
         tabBarIcon: ({ focused, tintColor }) => (
@@ -45,8 +40,8 @@ const TabNavigator = createBottomTabNavigator({
     }
 },
 
-  Welcome: {
-    screen: IntroScreen,
+  Profile: {
+    screen: Profile,
     navigationOptions: {
         tabBarLabel: "Profile",
         tabBarIcon: ({ focused, tintColor }) => (

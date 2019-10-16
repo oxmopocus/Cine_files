@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "application météo",
-    "slug": "meteo-app",
+    "name": "Ciné Files",
+    "slug": "cinefiles",
     "privacy": "public",
     "sdkVersion": "34.0.0",
     "platforms": [

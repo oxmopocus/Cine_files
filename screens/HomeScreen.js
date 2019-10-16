@@ -1,11 +1,10 @@
-
 import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {View, Text, Dimensions, AsyncStorage, ImageBackground, FlatList} from 'react-native';
 import * as Permissions from 'expo-permissions';
 import ListItem from '../components/ListItem';
-import { SearchBar, Header, Image } from 'react-native-elements';
+import {SearchBar, Header, Image} from 'react-native-elements';
 
 const {width} = Dimensions.get('window');
 
@@ -29,7 +28,7 @@ const styleSheet = {
         fontSize: 25,
         fontWeight: 'bold',
     },
-    flatlist : {
+    flatlist: {
         paddingTop: 15,
     }
 };
@@ -44,18 +43,18 @@ const HomeScreen = props => {
             setError('Permission to access location was denied');
         }
 
-        navigator.geolocation.getCurrentPosition((location) =>  {
+        navigator.geolocation.getCurrentPosition((location) => {
             dispatch({type: 'app/getMeteoInformations', payload: location});
         });
     }
 
     useEffect(() => {
-        if(Object.keys(informations).length < 1) _getLocationAsync();
+        if (Object.keys(informations).length < 1) _getLocationAsync();
     }, []);
 
     console.log(informations);
 
-    
+
     return (
 
         <View>
@@ -63,22 +62,19 @@ const HomeScreen = props => {
             <Header
                 leftComponent={<ImageBackground
                     source={require('../assets/logo.png')}
-                    style={{ width: 40, height: 40 }}
+                    style={{width: 40, height: 40}}
                 />}
-                centerComponent={{ text: 'MOVIES', style: { color: '#e50913' } }}
-                rightComponent={{ icon: 'search', color: '#fff' }}
+                centerComponent={{text: 'MOVIES', style: {color: '#e50913'}}}
+                rightComponent={{icon: 'search', color: '#fff'}}
                 containerStyle={{
                     backgroundColor: '#000',
                     justifyContent: 'space-around',
                 }}
             />
 
-
             <FlatList style={styleSheet.flatlist}/>
 
-
         </View>
-
 
 
     );

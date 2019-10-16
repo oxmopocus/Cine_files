@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
-import {Text, TextInput, View, FlatList} from "react-native";
-import {Button} from 'react-native-elements';
+import {Text, TextInput, View, FlatList, ImageBackground} from "react-native";
+import {Button, Header} from 'react-native-elements';
 import { SearchBar } from 'react-native-elements';
 import {connect} from 'react-redux';
 import ListItem from '../components/ListItem';
@@ -17,7 +17,7 @@ const styleSheet = {
 
 };
 
-const AddCityScreen = props => {
+const FavoriteScreen = props => {
 
     const [city, setCity] = useState('');
     const {dispatch} = props;
@@ -33,21 +33,22 @@ const AddCityScreen = props => {
     }
 
     return (
-        <View style={styleSheet.container}>
-            <SearchBar
-                placeholder="Type Here..."
-                onChangeText={(text) => setCity(text)}
-                value={city}
-                onBlur={handleSubmit}
-            />
-            <FlatList
-                data={cities}
-                renderItem={({item, index}) => <ListItem data={informations[item]} index = {index} />}
-                keyExtractor={item => item}
+        <View>
+            <Header
+                leftComponent={<ImageBackground
+                    source={require('../assets/logo.png')}
+                    style={{ width: 40, height: 40 }}
+                />}
+                centerComponent={{ text: 'FAVORITES', style: { color: '#e50913' } }}
+                rightComponent={{ icon: 'search', color: '#fff' }}
+                containerStyle={{
+                    backgroundColor: '#000',
+                    justifyContent: 'space-around',
+                }}
             />
         </View>
     );
 
 };
 
-export default connect(state => state.app)(AddCityScreen);
+export default connect(state => state.app)(FavoriteScreen);
