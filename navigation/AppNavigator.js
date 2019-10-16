@@ -11,7 +11,6 @@ import IntroFormScreen from '../screens/IntroFormScreen';
 import { AntDesign } from '@expo/vector-icons';
 import editScreen from '../screens/editScreen';
 
-
 const TabNavigator = createBottomTabNavigator({
   
   Home: {

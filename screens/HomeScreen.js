@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import {View, Text, Dimensions, AsyncStorage, ImageBackground, FlatList} from 'react-native';
 import * as Permissions from 'expo-permissions';
 import ListItem from '../components/ListItem';
+import { SearchBar, Header, Image } from 'react-native-elements';
 
 const {width} = Dimensions.get('window');
 
@@ -57,11 +58,29 @@ const HomeScreen = props => {
     
     return (
 
-        <FlatList style={styleSheet.flatlist}
-            data={cities}
-            renderItem={({ item, index }) => <ListItem data={informations[item]} index = {index} /> }
-            keyExtractor={item => String(item.id)}
-        />
+        <View>
+
+            <Header
+                leftComponent={<ImageBackground
+                    source={require('../assets/logo.png')}
+                    style={{ width: 40, height: 40 }}
+                />}
+                centerComponent={{ text: 'MOVIES', style: { color: '#e50913' } }}
+                rightComponent={{ icon: 'search', color: '#fff' }}
+                containerStyle={{
+                    backgroundColor: '#000',
+                    justifyContent: 'space-around',
+                }}
+            />
+
+
+            <FlatList style={styleSheet.flatlist}/>
+
+
+        </View>
+
+
+
     );
 };
 
