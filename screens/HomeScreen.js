@@ -52,9 +52,6 @@ const HomeScreen = props => {
     useEffect(() => {
         if(Object.keys(informations).length < 1) _getLocationAsync();
     }, []);
-
-    console.log(informations);
-
     
     return (
 
