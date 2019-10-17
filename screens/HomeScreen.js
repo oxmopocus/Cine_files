@@ -2,14 +2,33 @@
 import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {View, Text, Dimensions, AsyncStorage, ImageBackground, FlatList} from 'react-native';
+import {View, Text, Dimensions, AsyncStorage, ImageBackground, FlatList, TouchableOpacity, Image, Modal, ScrollView, StyleSheet } from 'react-native';
 import * as Permissions from 'expo-permissions';
 import ListItem from '../components/ListItem';
-import { SearchBar, Header, Image } from 'react-native-elements';
+import { SearchBar, Header } from 'react-native-elements';
+import {Appbar, DataTable, List} from "react-native-paper";
+import * as json from '../utils/film'
+
+const list_film = json[0];
+
 
 const {width} = Dimensions.get('window');
 
+
 const styleSheet = {
+
+    submenu: {
+        textColor: '#fff',
+        backgroundColor: '#000',
+    },
+
+    header: {
+        borderTopWidth: 0,
+        borderBottomWidth: 0,
+        shadowColor: 'transparent',
+        backgroundColor: '#000',
+    },
+
     container: {
         width: width,
         flex: 1,
@@ -56,28 +75,20 @@ const HomeScreen = props => {
     return (
 
         <View>
-
             <Header
                 leftComponent={<ImageBackground
                     source={require('../assets/logo.png')}
-                    style={{ width: 40, height: 40 }}
+                    style={{ width: 40, height: 40}}
                 />}
-                centerComponent={{ text: 'MOVIES', style: { color: '#e50913' } }}
+                centerComponent={{ text: 'MOVIES', style: { color: '#e50913', fontWeight: '900' } }}
                 rightComponent={{ icon: 'search', color: '#fff' }}
                 containerStyle={{
                     backgroundColor: '#000',
-                    justifyContent: 'space-around',
+                    borderBottomWidth: 0,
                 }}
             />
-
-
-            <FlatList style={styleSheet.flatlist}/>
-
-
+            <List.Subheader style={{backgroundColor: '#000', color:'#fff' }}><Text style={{ fontWeight: 'bold', textDecorationLine: 'underline' , color: '#e50913' }}>FOR YOU</Text>             TOP             ACTION              COMEDY              FAMILY</List.Subheader>
         </View>
-
-
-
     );
 };
 

@@ -30,6 +30,8 @@ const styleSheet = {
     flatlist : {
 
     }
+
+
 };
 
 
